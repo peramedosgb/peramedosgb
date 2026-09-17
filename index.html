@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PERAMED OSGB - İş sağlığı ve güvenliği hizmetleri, işyeri hekimliği, iş güvenliği uzmanlığı ve periyodik kontroller.">
+  <title>PERAMED OSGB | İş Sağlığı ve Güvenliği</title>
+  <style>
+    :root{
+      --primary:#0b6b68;
+      --primary-dark:#064b49;
+      --accent:#16a085;
+      --light:#f4fbfa;
+      --dark:#163333;
+      --muted:#617676;
+      --white:#fff;
+      --shadow:0 12px 35px rgba(10,70,68,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--dark);
+      line-height:1.6;
+      background:#fff;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 2px 18px rgba(0,0,0,.06);
+      backdrop-filter:blur(8px);
+    }
+    .nav{
+      height:76px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{font-size:27px;font-weight:800;color:var(--primary);letter-spacing:.5px}
+    .logo span{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);margin-top:-6px}
+    nav{display:flex;gap:25px;align-items:center}
+    nav a{font-size:14px;font-weight:700;color:#385454}
+    nav a:hover{color:var(--primary)}
+    .nav-btn{
+      background:var(--primary);color:white!important;padding:11px 17px;border-radius:9px;
+    }
+    .menu{display:none;background:none;border:0;font-size:28px;color:var(--primary)}
+    .hero{
+      background:linear-gradient(135deg,#eaf8f6 0%,#fff 60%);
+      padding:90px 0 80px;
+      overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
+    .badge{
+      display:inline-block;background:#d9f2ef;color:var(--primary);
+      padding:8px 14px;border-radius:30px;font-size:13px;font-weight:800;margin-bottom:18px;
+    }
+    h1{font-size:clamp(40px,6vw,64px);line-height:1.08;margin-bottom:22px}
+    h1 span{color:var(--primary)}
+    .hero p{font-size:18px;color:var(--muted);max-width:650px;margin-bottom:30px}
+    .buttons{display:flex;gap:13px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:14px 22px;border-radius:10px;font-weight:800;
+      transition:.2s;cursor:pointer;border:2px solid transparent;
+    }
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+    .btn-outline{border-color:#b7d7d4;color:var(--primary);background:#fff}
+    .hero-card{
+      background:#fff;border-radius:25px;padding:34px;box-shadow:var(--shadow);
+      border:1px solid #e4efee;
+    }
+    .shield{
+      width:80px;height:80px;border-radius:22px;background:#dff5f2;
+      display:grid;place-items:center;font-size:40px;margin-bottom:22px;
+    }
+    .hero-card h3{font-size:23px;margin-bottom:10px}
+    .hero-card p{font-size:15px;margin-bottom:18px}
+    .checks{list-style:none}
+    .checks li{padding:7px 0;color:#47605f}
+    .checks li::before{content:"✓";font-weight:bold;color:var(--accent);margin-right:10px}
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 45px}
+    .section-head h2{font-size:38px;margin-bottom:10px}
+    .section-head p{color:var(--muted)}
+    .services{background:var(--light)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{
+      background:#fff;border:1px solid #e4eeee;border-radius:18px;padding:27px;
+      box-shadow:0 8px 24px rgba(0,0,0,.04);transition:.25s;
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .icon{
+      width:54px;height:54px;border-radius:15px;background:#e2f4f1;
+      display:grid;place-items:center;font-size:26px;margin-bottom:18px;
+    }
+    .card h3{margin-bottom:8px;font-size:20px}
+    .card p{color:var(--muted);font-size:14px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .about-box{background:var(--primary);color:white;border-radius:24px;padding:38px}
+    .about-box h3{font-size:28px;margin-bottom:14px}
+    .about-box p{opacity:.9}
+    .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:25px}
+    .stat{background:rgba(255,255,255,.1);padding:18px;border-radius:12px}
+    .stat strong{font-size:28px;display:block}
+    .about-text h2{font-size:38px;margin-bottom:17px}
+    .about-text p{color:var(--muted);margin-bottom:17px}
+    .features{list-style:none}
+    .features li{padding:9px 0}
+    .features li::before{content:"✓";color:var(--primary);font-weight:bold;margin-right:10px}
+    .contact{background:#f4fbfa}
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px}
+    .contact-info h2{font-size:38px;margin-bottom:15px}
+    .contact-info p{color:var(--muted);margin-bottom:25px}
+    .contact-item{display:flex;gap:14px;margin:17px 0;align-items:flex-start}
+    .contact-icon{font-size:22px}
+    .contact-item strong{display:block}
+    .contact-item span{color:var(--muted);font-size:14px}
+    form{background:#fff;padding:30px;border-radius:20px;box-shadow:var(--shadow)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}
+    input,textarea,select{
+      width:100%;border:1px solid #d7e5e4;border-radius:9px;padding:13px;
+      font:inherit;outline:none;margin-bottom:15px;
+    }
+    input:focus,textarea:focus,select:focus{border-color:var(--primary)}
+    textarea{height:125px;resize:vertical}
+    footer{background:#123737;color:#dcebea;padding:28px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-logo{font-size:22px;font-weight:800;color:#fff}
+    .footer-small{font-size:13px;opacity:.8}
+    .whatsapp{
+      position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;
+      background:#25d366;color:white;display:grid;place-items:center;font-size:28px;
+      box-shadow:0 8px 25px rgba(0,0,0,.2);z-index:999;
+    }
+    @media(max-width:850px){
+      nav{display:none;position:absolute;top:76px;left:0;width:100%;background:#fff;padding:20px;flex-direction:column;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+      nav.open{display:flex}
+      .menu{display:block}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .hero{padding:65px 0}
+    }
+    @media(max-width:560px){
+      .cards,.form-row{grid-template-columns:1fr}
+      section{padding:62px 0}
+      .section-head h2,.about-text h2,.contact-info h2{font-size:31px}
+      .hero p{font-size:16px}
+      .footer-row{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#anasayfa" class="logo">PERAMED<span>OSGB</span></a>
+    <button class="menu" onclick="toggleMenu()" aria-label="Menüyü aç">☰</button>
+    <nav id="nav">
+      <a href="#anasayfa">Ana Sayfa</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#iletisim">İletişim</a>
+      <a href="#iletisim" class="nav-btn">Teklif Al</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="anasayfa">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">İŞ SAĞLIĞI VE GÜVENLİĞİ</div>
+        <h1>Güvenli İşyerleri,<br><span>Sağlıklı Çalışanlar.</span></h1>
+        <p>
+          PERAMED OSGB olarak iş sağlığı ve güvenliği süreçlerinizde
+          profesyonel ve mevzuata uygun çözümler sunuyoruz.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#hizmetler">Hizmetlerimizi İnceleyin</a>
+          <a class="btn btn-outline" href="#iletisim">Bize Ulaşın</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="shield">🛡️</div>
+        <h3>İSG'de Güvenilir Çözüm Ortağınız</h3>
+        <p>İşyerinizin ihtiyaçlarına uygun, planlı ve sürdürülebilir İSG hizmetleri.</p>
+        <ul class="checks">
+          <li>İş Güvenliği Uzmanlığı</li>
+          <li>İşyeri Hekimliği</li>
+          <li>Risk Değerlendirmesi</li>
+          <li>Periyodik Kontroller</li>
+          <li>İSG Eğitimleri</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="hizmetler">
+    <div class="container">
+      <div class="section-head">
+        <h2>Hizmetlerimiz</h2>
+        <p>İş sağlığı ve güvenliği alanında işletmenizin ihtiyaçlarına yönelik çözümler.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="icon">🦺</div><h3>İş Güvenliği Uzmanlığı</h3><p>İşyeriniz için gerekli İSG çalışmalarının planlanması ve yürütülmesi.</p></div>
+        <div class="card"><div class="icon">🩺</div><h3>İşyeri Hekimliği</h3><p>Çalışanların sağlık gözetimi ve işyeri sağlık hizmetlerinin yürütülmesi.</p></div>
+        <div class="card"><div class="icon">📋</div><h3>Risk Değerlendirmesi</h3><p>Tehlikelerin belirlenmesi, risklerin analiz edilmesi ve önleyici çalışmalar.</p></div>
+        <div class="card"><div class="icon">⚙️</div><h3>Periyodik Kontroller</h3><p>İş ekipmanlarının ilgili standart ve mevzuat kapsamında kontrolleri.</p></div>
+        <div class="card"><div class="icon">🎓</div><h3>İSG Eğitimleri</h3><p>Çalışanlara yönelik temel ve işyerine özel iş sağlığı ve güvenliği eğitimleri.</p></div>
+        <div class="card"><div class="icon">📑</div><h3>İSG Danışmanlığı</h3><p>İSG mevzuatı ve uygulamaları konusunda işletmelere danışmanlık desteği.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hakkimizda">
+    <div class="container about-grid">
+      <div class="about-box">
+        <h3>PERAMED OSGB</h3>
+        <p>
+          İş sağlığı ve güvenliği süreçlerini işletmeler için anlaşılır,
+          düzenli ve uygulanabilir hale getirmeyi hedefliyoruz.
+        </p>
+        <div class="stat-grid">
+          <div class="stat"><strong>7/24</strong><span>İletişim</span></div>
+          <div class="stat"><strong>İSG</strong><span>Profesyonel Destek</span></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h2>Neden PERAMED?</h2>
+        <p>İSG süreçlerinde yalnızca yasal gereklilikleri değil, işyerinizin gerçek ihtiyaçlarını da dikkate alan bir yaklaşım sunuyoruz.</p>
+        <ul class="features">
+          <li>İşyerine özel İSG planlaması</li>
+          <li>Düzenli takip ve raporlama</li>
+          <li>Mevzuat ve standartlara uygun çalışma</li>
+          <li>Hızlı iletişim ve çözüm odaklı hizmet</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="iletisim">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Bizimle İletişime Geçin</h2>
+        <p>İşyeriniz için ihtiyaç duyduğunuz İSG hizmetleri hakkında bilgi ve teklif almak için bize ulaşın.</p>
+
+        <div class="contact-item"><div class="contact-icon">📞</div><div><strong>Telefon</strong><span>0539 317 88 49</span></div></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><div><strong>E-posta</strong><span>info@peramedosgb.com</span></div></div>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Adres</strong><span><a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x266078e7f847ed97:0x16ccef2fc0e1f5b0?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noopener">Ahi Evran OSB, ASO BULVARI NO:1/301, 06935 Sincan/Ankara</a></span></div></div>
+      </div>
+
+      <form onsubmit="sendForm(event)">
+        <h3 style="font-size:24px;margin-bottom:18px">Teklif / Bilgi Talebi</h3>
+        <div class="form-row">
+          <div><label>Ad Soyad</label><input type="text" required placeholder="Adınız Soyadınız"></div>
+          <div><label>Telefon</label><input type="tel" required placeholder="05xx xxx xx xx"></div>
+        </div>
+        <label>E-posta</label>
+        <input type="email" placeholder="ornek@email.com">
+        <label>Hizmet</label>
+        <select>
+          <option>İş Güvenliği Uzmanlığı</option>
+          <option>İşyeri Hekimliği</option>
+          <option>Periyodik Kontroller</option>
+          <option>Risk Değerlendirmesi</option>
+          <option>İSG Eğitimi</option>
+          <option>Diğer</option>
+        </select>
+        <label>Mesajınız</label>
+        <textarea placeholder="Talebinizi yazabilirsiniz..."></textarea>
+        <button class="btn btn-primary" type="submit">Talebi Gönder</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div class="footer-logo">PERAMED OSGB</div>
+    <div class="footer-small">© 2026 PERAMED OSGB. Tüm hakları saklıdır.</div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/905393178849" target="_blank" aria-label="WhatsApp">☏</a>
+
+<script>
+  function toggleMenu(){
+    document.getElementById("nav").classList.toggle("open");
+  }
+  document.querySelectorAll("nav a").forEach(a=>{
+    a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open"));
+  });
+  function sendForm(e){
+    e.preventDefault();
+    alert("Talebiniz alındı. Formu gerçek e-posta/WhatsApp sistemine bağlamak için iletişim bilgilerinizi güncellemeniz gerekir.");
+  }
+</script>
+</body>
+</html>
